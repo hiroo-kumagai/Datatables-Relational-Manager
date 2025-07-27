@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Company Data Management System</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-content">
+        <div class="logo">Company Name</div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="employees.html">Employees</a></li>
+            <li><a href="departments.html">Departments</a></li>
+            <li><a href="security-cards.html">Security Cards</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="card-title">Company Data Management System</h1>
+        </div>
+        <div class="card-body">
+          <p>
+            Welcome to the Company Data Management System. This application
+            allows you to manage various aspects of your company's data
+            including employees, departments, and security cards.
+          </p>
+
+          <h2>Features:</h2>
+          <ul>
+            <li>
+              <strong>Employee Management:</strong> Manage employee information
+              with department and security card assignments
+            </li>
+            <li>
+              <strong>Department Management:</strong> Organize and maintain
+              department information
+            </li>
+            <li>
+              <strong>Security Card Management:</strong> Track and manage
+              security card assignments
+            </li>
+            <li>
+              <strong>Toggle Editing:</strong> Enable/disable editing, adding,
+              and deleting capabilities
+            </li>
+          </ul>
+
+          <h2>Navigation:</h2>
+          <div class="btn-group">
+            <a href="employees.html" class="btn btn-primary"
+              >Manage Employees</a
+            >
+            <a href="departments.html" class="btn btn-primary"
+              >Manage Departments</a
+            >
+            <a href="security-cards.html" class="btn btn-primary"
+              >Manage Security Cards</a
+            >
+          </div>
+
+          <h2>Getting Started:</h2>
+          <ol>
+            <li>Make sure the test database is running</li>
+            <li>Import the database.sql file to create the necessary tables</li>
+            <li>
+              Navigate to any of the management pages using the links above
+            </li>
+            <li>
+              Use the toggle switch to enable editing mode when you need to make
+              changes
+            </li>
+          </ol>
+
+          <div class="alert alert-success">
+            <strong>Note:</strong> This system is designed for internal company
+            use. All data is stored locally in your MySQL database.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  </body>
+</html>

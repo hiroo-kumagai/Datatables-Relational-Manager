@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Security Card Management - Company Data Management System</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-content">
+        <div class="logo">Company Name</div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="employees.html">Employees</a></li>
+            <li><a href="departments.html">Departments</a></li>
+            <li>
+              <a href="security-cards.html" class="active">Security Cards</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="card-title">Security Card Management</h1>
+          <div>
+            <label for="editing-toggle">
+              <span id="toggle-label">Disabled</span>
+              <div class="toggle-switch">
+                <input type="checkbox" id="editing-toggle" />
+                <span class="slider"></span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="btn-group">
+            <button id="add-btn" class="btn btn-success" style="display: none">
+              Add Security Card
+            </button>
+          </div>
+
+          <div class="table-responsive">
+            <table id="data-table" class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Card Number</th>
+                  <th>Card Type</th>
+                  <th>Access Level</th>
+                  <th>Issue Date</th>
+                  <th>Expiry Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add/Edit Modal -->
+    <div id="form-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="modal-title">Add Security Card</h2>
+          <span class="close">&times;</span>
+        </div>
+        <form id="entity-form">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="card_number" class="form-label">Card Number *</label>
+              <input
+                type="text"
+                class="form-control"
+                name="card_number"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="card_type" class="form-label">Card Type *</label>
+              <select class="form-control" name="card_type" required>
+                <option value="">Select Card Type...</option>
+                <option value="Standard">Standard</option>
+                <option value="Premium">Premium</option>
+                <option value="Executive">Executive</option>
+                <option value="Temporary">Temporary</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="access_level" class="form-label"
+                >Access Level *</label
+              >
+              <select class="form-control" name="access_level" required>
+                <option value="">Select Access Level...</option>
+                <option value="Level 1">Level 1</option>
+                <option value="Level 2">Level 2</option>
+                <option value="Level 3">Level 3</option>
+                <option value="Level 4">Level 4</option>
+                <option value="Level 5">Level 5</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="issue_date" class="form-label">Issue Date *</label>
+              <input
+                type="date"
+                class="form-control"
+                name="issue_date"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="expiry_date" class="form-label">Expiry Date</label>
+              <input type="date" class="form-control" name="expiry_date" />
+            </div>
+            <div class="form-group">
+              <label for="status" class="form-label">Status</label>
+              <select class="form-control" name="status">
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+                <option value="expired">Expired</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary close">
+              Cancel
+            </button>
+            <button type="submit" class="btn" id="submit-btn">
+              Add Security Card
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div id="delete-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Delete Security Card</h2>
+          <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+          <p>
+            Are you sure you want to delete this security card? This action
+            cannot be undone.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary close">Cancel</button>
+          <button type="button" class="btn btn-danger" id="confirm-delete">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/base-table.js"></script>
+    <script src="assets/js/responsive-table.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const securityCardTable = new BaseTable({
+          tableName: "security_cards",
+          apiEndpoint: "api/security_cards.php",
+          columns: [
+            { data: "id", title: "ID" },
+            { data: "card_number", title: "Card Number" },
+            { data: "card_type", title: "Card Type" },
+            { data: "access_level", title: "Access Level" },
+            { data: "issue_date", title: "Issue Date" },
+            { data: "expiry_date", title: "Expiry Date" },
+            {
+              data: "status",
+              title: "Status",
+              render: function (data, type, row) {
+                const statusColors = {
+                  active: "green",
+                  inactive: "orange",
+                  expired: "red",
+                };
+                return `<span style="color: ${
+                  statusColors[data] || "black"
+                };">${data.charAt(0).toUpperCase() + data.slice(1)}</span>`;
+              },
+            },
+          ],
+        });
+      });
+    </script>
+  </body>
+</html>
