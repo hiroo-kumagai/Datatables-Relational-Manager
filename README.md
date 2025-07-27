@@ -8,7 +8,6 @@ A PHP-based web application that provides an intuitive interface for managing re
 - **Foreign Key Constraint Handling**: Automatic validation and user-friendly alerts when foreign key constraints would be violated
 - **DataTables Integration**: Rich, interactive tables with sorting, searching, and pagination
 - **Real-time CRUD Operations**: Add, edit, and delete records with immediate feedback
-- **Responsive Design**: Bootstrap-based UI that works across different screen sizes
 - **RESTful API**: Clean API architecture using PHP and PDO
 - **Modal-based Forms**: User-friendly modal dialogs for data entry and editing
 
@@ -21,24 +20,30 @@ A PHP-based web application that provides an intuitive interface for managing re
 
 ## 🛠 Installation
 
-### Using XAMPP (Recommended)
+### If you use XAMPP
+
+This application has been tested under XAMPP.
 
 1. **Download and Install XAMPP**
+
    - Download XAMPP from [https://www.apachefriends.org/](https://www.apachefriends.org/)
    - Install and start Apache and MySQL services
 
 2. **Clone or Download the Project**
+
    ```bash
    cd C:\xampp\htdocs
    git clone https://github.com/yourusername/Datatables-Relational-Manager.git
    ```
 
 3. **Database Setup**
+
    - Open phpMyAdmin (http://localhost/phpmyadmin)
    - Create a new database named `company_data_management`
    - Import the provided `database.sql` file
 
 4. **Configuration**
+
    - Open `config/database.php`
    - Update database credentials if needed (default works with XAMPP)
 
@@ -56,12 +61,14 @@ The application comes with a sample database structure including:
 ## 🎯 Usage
 
 ### Navigation
+
 - **Home Page**: Overview and navigation to different table managers
 - **Departments**: Manage company departments
 - **Employees**: Manage employee records
 - **Security Cards**: Manage security card assignments
 
 ### Operations
+
 1. **View Records**: All records are displayed in interactive DataTables
 2. **Add Records**: Click the "Add" button to open the creation modal
 3. **Edit Records**: Click the "Edit" button on any row to modify data
@@ -69,6 +76,7 @@ The application comes with a sample database structure including:
 5. **Toggle Editing**: Use the editing toggle to enable/disable modification features
 
 ### Foreign Key Handling
+
 - The system automatically validates foreign key relationships
 - If a constraint violation is detected, an alert will be displayed
 - Tables will not be updated if it would violate referential integrity
@@ -86,11 +94,13 @@ Each table has its own API endpoint supporting standard HTTP methods:
 ## 🔒 Security Considerations
 
 ### ✅ Implemented Security Measures
+
 - **SQL Injection Protection**: Uses PDO prepared statements throughout
 - **CORS Configuration**: Proper headers for API access
 - **Error Handling**: Structured error responses
 
 ### ⚠️ Security Limitations
+
 This project includes basic security measures but **additional security implementations may be necessary** depending on your intended use:
 
 - **No Authentication System**: APIs are open access
@@ -123,6 +133,7 @@ Datatables-Relational-Manager/
 ## 🧪 Testing Environment
 
 This project has been tested and confirmed to work in:
+
 - **XAMPP 8.2.x** with PHP 8.2 and MySQL 8.0
 - **Windows 10/11** environment
 - **Modern browsers**: Chrome, Firefox, Edge, Safari
@@ -144,33 +155,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Foreign key field validation relies on client-side JavaScript
 - No built-in backup/restore functionality
 - Manual database setup required
-
-## 🔮 Future Enhancements
-
-- User authentication and authorization system
-- Advanced input validation and sanitization
-- Role-based access control
-- Audit logging for all operations
-- Export/import functionality
-- Multi-language support
-
-## ❓ FAQ
-
-**Q: Can I use this in production?**
-A: Additional security measures are recommended for production use. See the Security Considerations section.
-
-**Q: How do I add a new table?**
-A: Create a new API file extending BaseAPI and add the corresponding HTML page following the existing patterns.
-
-**Q: Does it work with other web servers?**
-A: While tested with XAMPP/Apache, it should work with other PHP-capable web servers with minor configuration adjustments.
-
-## 📞 Support
-
-If you encounter any issues or have questions, please:
-1. Check the existing issues on GitHub
-2. Create a new issue with detailed information about your problem
-3. Include your environment details (PHP version, web server, etc.)
 
 ---
 
